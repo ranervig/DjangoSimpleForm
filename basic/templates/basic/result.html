@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Form Result</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'basic/site.css' %}" />
+    </head>
+    <body>
+        <h1>WDV495 Python Django</h1>
+        <h2>Logged Students</h2>
+        {% if student_list %}
+            <table class="student_list">
+                <thread>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>School</th>
+                    </tr>
+                </thread>
+                <tbody>
+                {% for student in student_list %}
+                    <tr>
+                        <td>{{student.first_name}}</td>
+                        <td>{{student.last_name}}</td>
+                        <td>{{student.school}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        <p>No Students have been entered.</p>
+        {% endif %}
+        <a href="{% url 'home' %}">Return To Form</a>
+    </body>
+</html>
